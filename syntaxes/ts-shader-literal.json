@@ -1,0 +1,97 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "shader-literal",
+  "scopeName": "source.shader.literal",
+  "fileTypes": [
+    "ts",
+    "tsx"
+  ],
+  "injectionSelector": "L:source -comment -string",
+  "repository": {
+    "ts-template": {
+      "begin": "\\$\\{",
+      "beginCaptures": {
+        "0": {
+          "name": "markup.heading.markdown punctuation.definition.template-expression.begin.ts"
+        }
+      },
+      "end": "\\}",
+      "endCaptures": {
+        "0": {
+          "name": "markup.heading.markdown punctuation.definition.template-expression.end.ts"
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.ts"
+        }
+      ]
+    },
+    "wgsl": {
+      "begin": "(?i)(\\s*\\/\\*wgsl\\*\\/\\s*)(`)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "source.ts"
+            }
+          ]
+        },
+        "2": {
+          "name": "punctuation.definition.string.template.begin.ts string.template.ts"
+        }
+      },
+      "end": "`",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.template.end.ts string.template.ts"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#ts-template"
+        },
+        {
+          "include": "source.wgsl"
+        }
+      ]
+    },
+    "glsl": {
+      "begin": "(?i)(\\s*\\/\\*glsl\\*\\/\\s*)(`)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "source.ts#expression"
+            }
+          ]
+        },
+        "2": {
+          "name": "punctuation.definition.string.template.begin.ts string.template.ts"
+        }
+      },
+      "end": "`",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.template.end.ts string.template.ts"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#ts-template"
+        },
+        {
+          "include": "source.glsl"
+        }
+      ]
+    }
+  },
+  "patterns": [
+    {
+      "include": "#wgsl"
+    },
+    {
+      "include": "#glsl"
+    }
+  ]
+}

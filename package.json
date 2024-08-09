@@ -1,0 +1,28 @@
+{
+  "name": "shader-literal",
+  "displayName": "shader-literal",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.91.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "grammars": [
+      {
+        "injectTo": [
+          "source.ts",
+          "source.tsx"
+        ],
+        "scopeName": "source.shader.literal",
+        "path": "./syntaxes/ts-shader-literal.json",
+        "embeddedLanguages": {
+          "source.wgsl": "wgsl",
+          "source.glsl": "glsl"
+        }
+      }
+    ]
+  }
+}
